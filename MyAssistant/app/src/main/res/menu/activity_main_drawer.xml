@@ -13,8 +13,8 @@
             android:icon="@drawable/ic_event_black_24dp"
             android:title="@string/menu_calendar" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_weather"
+            android:icon="@drawable/ic_cloud_black_24dp"
+            android:title="@string/menu_weather" />
     </group>
 </menu>

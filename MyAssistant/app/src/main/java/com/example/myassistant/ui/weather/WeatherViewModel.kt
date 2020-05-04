@@ -1,13 +1,13 @@
-package com.example.myassistant.ui.slideshow
+package com.example.myassistant.ui.weather
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class SlideshowViewModel : ViewModel() {
+class WeatherViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is slideshow Fragment"
+        value = "This is weather Fragment"
     }
     val text: LiveData<String> = _text
 }
