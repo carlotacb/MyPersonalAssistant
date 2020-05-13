@@ -10,40 +10,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myassistant.R
 import com.example.myassistant.adapters.EventItem
 import com.example.myassistant.adapters.EventsAdapter
+import com.example.myassistant.mockedData.TodayEvents
 
 class CalendarFragment : Fragment() {
 
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
         val root = inflater.inflate(R.layout.fragment_calendar, container, false)
 
-        val list = dataGenerated()
+        val list = TodayEvents()
 
         val recyclerView: RecyclerView = root.findViewById(R.id.calendar_events)
-        recyclerView.adapter =
-            EventsAdapter(list)
+        recyclerView.adapter = EventsAdapter(list)
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.setHasFixedSize(true)
 
         return root
-    }
-
-    private fun dataGenerated(): List<EventItem> {
-        // TODO: Get elements from calendar
-        val list = ArrayList<EventItem>()
-
-        list += EventItem(
-            "10:00 (1 hour)",
-            "Daily Meeting"
-        )
-        list += EventItem(
-            "12:00 (1 hour)",
-            "Videollamada familiar"
-        )
-        list += EventItem(
-            "18:00 (2 hours)",
-            "Fitness Class"
-        )
-
-        return list
     }
 }
