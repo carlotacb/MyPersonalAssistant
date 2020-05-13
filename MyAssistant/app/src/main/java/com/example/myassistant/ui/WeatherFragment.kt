@@ -15,10 +15,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myassistant.R
 import com.example.myassistant.adapters.CityAdapter
-import com.example.myassistant.adapters.CityItem
-import com.example.myassistant.adapters.DayTemperature
 import com.example.myassistant.adapters.ListWeatherAdapter
 import com.example.myassistant.getWeatherIcon
+import com.example.myassistant.mockedData.CurrentLocationForecastWeather
+import com.example.myassistant.mockedData.citiesWeather
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.dialog_add_city.view.*
 
@@ -34,11 +34,8 @@ class WeatherFragment : Fragment() {
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
         val root = inflater.inflate(R.layout.fragment_weather, container, false)
 
-        val list = dataGenerated()
-        val list2 = dataGenerated2()
-
         val recyclerView: RecyclerView = root.findViewById(R.id.city_weather)
-        recyclerView.adapter = CityAdapter(list)
+        recyclerView.adapter = CityAdapter(citiesWeather())
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.setHasFixedSize(true)
 
@@ -52,8 +49,7 @@ class WeatherFragment : Fragment() {
         currentWeather.setImageResource(getWeatherIcon(weather))
 
         val currentFutureTemps: RecyclerView = root.findViewById(R.id.future_temps)
-        currentFutureTemps.adapter =
-            ListWeatherAdapter(list2)
+        currentFutureTemps.adapter = ListWeatherAdapter(CurrentLocationForecastWeather())
         currentFutureTemps.layoutManager = LinearLayoutManager(activity)
         currentFutureTemps.setHasFixedSize(true)
 
@@ -82,96 +78,5 @@ class WeatherFragment : Fragment() {
         }
 
         return root
-    }
-
-    private fun dataGenerated2(): List<DayTemperature> {
-        val list = ArrayList<DayTemperature>()
-
-        list += DayTemperature("Monday", 20, 25)
-        list += DayTemperature(
-            "Tuesday",
-            18,
-            22
-        )
-        list += DayTemperature(
-            "Wednesday",
-            19,
-            23
-        )
-        list += DayTemperature(
-            "Thursday",
-            22,
-            24
-        )
-
-        return list
-    }
-
-    private fun dataGenerated(): List<CityItem> {
-        // TODO: Get information from selected cities
-
-        val bcn = ArrayList<DayTemperature>()
-
-        bcn += DayTemperature("Monday", 20, 25)
-        bcn += DayTemperature("Tuesday", 18, 22)
-        bcn += DayTemperature(
-            "Wednesday",
-            19,
-            23
-        )
-        bcn += DayTemperature(
-            "Thursday",
-            22,
-            24
-        )
-
-        val ny = ArrayList<DayTemperature>()
-
-        ny += DayTemperature("Monday", 15, 19)
-        ny += DayTemperature("Tuesday", 18, 20)
-        ny += DayTemperature(
-            "Wednesday",
-            13,
-            18
-        )
-        ny += DayTemperature("Thursday", 20, 22)
-
-        val lnd = ArrayList<DayTemperature>()
-
-        lnd += DayTemperature("Monday", 18, 22)
-        lnd += DayTemperature("Tuesday", 15, 20)
-        lnd += DayTemperature(
-            "Wednesday",
-            12,
-            18
-        )
-        lnd += DayTemperature(
-            "Thursday",
-            13,
-            17
-        )
-
-        val list = ArrayList<CityItem>()
-
-        list += CityItem(
-            "Paris",
-            22,
-            "cloudy",
-            bcn
-        )
-        list += CityItem(
-            "New York",
-            25,
-            "moon",
-            ny
-        )
-        list += CityItem(
-            "London",
-            15,
-            "storm",
-            lnd
-        )
-
-        return list
     }
 }

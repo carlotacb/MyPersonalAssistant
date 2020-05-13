@@ -31,9 +31,12 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.myassistant.adapters.ForecastAdapter
+import com.example.myassistant.mockedData.ForecastCurrentLocation
 import com.google.android.gms.location.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.dialog_forecast_information.view.*
 import kotlinx.android.synthetic.main.dialog_weather_information.view.*
 import java.util.*
 
@@ -177,9 +180,11 @@ class MainActivity : AppCompatActivity() {
 
                 // TODO: Create enum with the possibles questions
 
+                // ------------------- WEATHER QUESTIONS
+
                 if (spokenText == "what's the weather today") {
                     // TODO: Get current temperature and weather
-                    speaker.speak("The weather is 25 degrees", TextToSpeech.QUEUE_FLUSH, null)
+                    speaker.speak("Today we have a sunny day in Barcelona, the temperature is 25 degrees with a feeling of 30 degrees", TextToSpeech.QUEUE_FLUSH, null)
 
                     val dialogWeatherInformation = LayoutInflater.from(this).inflate(R.layout.dialog_weather_information, null)
                     dialogBuilder.setView(dialogWeatherInformation)
@@ -201,12 +206,20 @@ class MainActivity : AppCompatActivity() {
 
                 else if (spokenText == "what will be the weather tomorrow") {
                     // TODO: Get tomorrow weather
-                    speaker.speak("Tomorrow will be a rainy day and the temperature will be 15 degrees", TextToSpeech.QUEUE_FLUSH, null)
+                    speaker.speak("Tomorrow will be a sunny day in Barcelona, the temperature will be 20 degrees with a feeling of 22 degrees", TextToSpeech.QUEUE_FLUSH, null)
 
-                    val dialogForecastInformation = LayoutInflater.from(this).inflate(R.layout.dialog_forecast_information, null)
-                    dialogBuilder.setView(dialogForecastInformation)
-                    val title = SpannableString("Barcelona forecast")
+                    val dialogWeatherInformation = LayoutInflater.from(this).inflate(R.layout.dialog_weather_information, null)
+                    dialogBuilder.setView(dialogWeatherInformation)
+                    val title = SpannableString("Tomorrow's weather")
                     title.setSpan(AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),0,title.length,0)
+                    dialogBuilder.setTitle(title)
+                    dialogWeatherInformation.city_name_dialog.text = "Barcelona"
+                    dialogWeatherInformation.dialog_preasure.text = "Preasure: 1050 mb"
+                    dialogWeatherInformation.dialog_temp.text = "20ºC"
+                    dialogWeatherInformation.dialog_humidity.text = "Humidity: 40%"
+                    dialogWeatherInformation.dialog_feels.text = "Feels like: 22ºC"
+                    dialogWeatherInformation.dialog_uvIndex.text = "UV Index: 4"
+                    dialogWeatherInformation.dialog_weatherIcon.setImageResource(getWeatherIcon("sunny"))
                     dialogBuilder.setPositiveButton("Close", DialogInterface.OnClickListener { dialog, id ->
                         dialog.dismiss()
                     })
@@ -215,17 +228,40 @@ class MainActivity : AppCompatActivity() {
 
                 else if (spokenText == "what's the weather forecast") {
                     // TODO: Get weather for next days
-                    // TODO: Check fragment and change to weather fragment if it's not there
-                    // TODO: Detalls card actual
-                    speaker.speak("Tomorrow 15 and the following days between 12 and 20 degrees", TextToSpeech.QUEUE_FLUSH, null)
+                    speaker.speak("In Barcelona the following days the temperature will be between 13 and 23 degrees", TextToSpeech.QUEUE_FLUSH, null)
+
+                    val dialogForecastInformation = LayoutInflater.from(this).inflate(R.layout.dialog_forecast_information, null)
+                    dialogBuilder.setView(dialogForecastInformation)
+                    val title = SpannableString("Barcelona forecast")
+                    title.setSpan(AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),0,title.length,0)
+                    dialogBuilder.setTitle(title)
+                    dialogForecastInformation.forecast_list.adapter = ForecastAdapter(ForecastCurrentLocation())
+                    dialogBuilder.setPositiveButton("Close", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.dismiss()
+                    })
+                    dialogBuilder.show()
                 }
 
                 else if (spokenText == "what's the weather in London") {
                     // TODO: Make london a variable
                     // TODO: Get weather from X city
-                    // TODO: Més informació sobre el weather d'aquesta ciutat (Nova card a sobre)
-                    // TODO: Check fragment and change to weather fragment if it's not there
-                    speaker.speak("In london the weather is 13 degrees", TextToSpeech.QUEUE_FLUSH, null)
+                    speaker.speak("In london it's a rainy day, the temperature is 15 degrees with a feeling of 12 degrees", TextToSpeech.QUEUE_FLUSH, null)
+                    val dialogWeatherInformation = LayoutInflater.from(this).inflate(R.layout.dialog_weather_information, null)
+                    dialogBuilder.setView(dialogWeatherInformation)
+                    val title = SpannableString("London's weather")
+                    title.setSpan(AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),0,title.length,0)
+                    dialogBuilder.setTitle(title)
+                    dialogWeatherInformation.city_name_dialog.text = "London"
+                    dialogWeatherInformation.dialog_preasure.text = "Preasure: 1020 mb"
+                    dialogWeatherInformation.dialog_temp.text = "15ºC"
+                    dialogWeatherInformation.dialog_humidity.text = "Humidity: 10%"
+                    dialogWeatherInformation.dialog_feels.text = "Feels like: 12ºC"
+                    dialogWeatherInformation.dialog_uvIndex.text = "UV Index: 3"
+                    dialogWeatherInformation.dialog_weatherIcon.setImageResource(getWeatherIcon("rainy"))
+                    dialogBuilder.setPositiveButton("Close", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.dismiss()
+                    })
+                    dialogBuilder.show()
                 }
 
                 else if (spokenText == "where I am") {
