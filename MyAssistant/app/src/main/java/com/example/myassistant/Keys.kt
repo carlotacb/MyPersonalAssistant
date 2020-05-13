@@ -1,2 +1,3 @@
-package com.example.myassistant.ui
+package com.example.myassistant
 
+val WEATHER_KEY = "";
