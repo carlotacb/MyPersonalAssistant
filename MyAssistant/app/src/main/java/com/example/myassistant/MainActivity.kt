@@ -303,12 +303,12 @@ class MainActivity : AppCompatActivity() {
                     speaker.speak("The event has been created", TextToSpeech.QUEUE_FLUSH, null)
                 }
 
+                // ------------------- THE QUESTION IS NOT CORRECT
                 else {
-                    speaker.speak("sorry I don't understand what you just say, try with some of the following questions: what's the weather today?, what will be the weather tomorrow?, where I am? ... you can find it all in the Help screen", TextToSpeech.QUEUE_FLUSH, null)
-                    displaySpeechRecognizer()
+                    speaker.speak("sorry I don't understand what you just say, try with some of the Help screen questions", TextToSpeech.QUEUE_FLUSH, null)
+                    // TODO: Change to Help Screen
                 }
-                // Current location --> GPS - Default location --> La que marques tu
-
+                
             } else {
                 Toast.makeText(this, "I can't hear you", Toast.LENGTH_LONG).show()
             }
