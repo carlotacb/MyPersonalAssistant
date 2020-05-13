@@ -264,20 +264,26 @@ class MainActivity : AppCompatActivity() {
                     dialogBuilder.show()
                 }
 
+                // ------------------- LOCATION QUESTIONS
+
                 else if (spokenText == "where I am") {
-                    val loc = "Your current location is ".plus(sharedPreferences.getString("Location", ""))
-                    speaker.speak(loc, TextToSpeech.QUEUE_FLUSH, null)
+                    val location = sharedPreferences.getString("Location", "")
+                    // TODO: Show card with the GPS position
+                    speaker.speak("Your current location is $location", TextToSpeech.QUEUE_FLUSH, null)
                 }
 
                 else if (spokenText == "what's my default location") {
-                    val loc = "Your default location is Barcelona"
-                    speaker.speak(loc, TextToSpeech.QUEUE_FLUSH, null)
+                    val location = sharedPreferences.getString("DefLocation", "")
+                    speaker.speak("Your default location is $location", TextToSpeech.QUEUE_FLUSH, null)
                 }
 
-                else if (spokenText == "change my default location to Tarragona") {
-                    // TODO: Change location
-                    // TODO: Check fragment and change to settings fragment if it's not there
-                    speaker.speak("Your location has been changed to Tarragona", TextToSpeech.QUEUE_FLUSH, null)
+                else if (spokenText.contains("change my default location to")) {
+                    val changeCity = spokenText.substring(spokenText.lastIndexOf(" ")+1)
+                    val sharedPref: SharedPreferences = getSharedPreferences("shared-preference-file", Context.MODE_PRIVATE)
+                    val editorSharedPref: SharedPreferences.Editor = sharedPref.edit()
+                    editorSharedPref.putString("DefLocation", changeCity)
+                    editorSharedPref.apply()
+                    speaker.speak("Your location has been changed to $changeCity", TextToSpeech.QUEUE_FLUSH, null)
                 }
 
                 else if (spokenText == "what are my events for today") {
