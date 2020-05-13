@@ -31,13 +31,17 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.myassistant.adapters.EventsAdapter
 import com.example.myassistant.adapters.ForecastAdapter
 import com.example.myassistant.mockedData.ForecastCurrentLocation
+import com.example.myassistant.mockedData.TodayEvents
+import com.example.myassistant.mockedData.TomorrowEvents
 import com.example.myassistant.ui.HelpFragment
 import com.google.android.gms.location.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.dialog_forecast_information.view.*
+import kotlinx.android.synthetic.main.dialog_planned_events.view.*
 import kotlinx.android.synthetic.main.dialog_weather_information.view.*
 import java.util.*
 
@@ -292,11 +296,31 @@ class MainActivity : AppCompatActivity() {
                 else if (spokenText == "what are my events for today") {
                     // TODO: Check events for the current day
                     speaker.speak("Your calendar today is full of events, you have 3 events", TextToSpeech.QUEUE_FLUSH, null)
+                    val dialogTodayEvents = LayoutInflater.from(this).inflate(R.layout.dialog_planned_events, null)
+                    dialogBuilder.setView(dialogTodayEvents)
+                    val title = SpannableString("Today events")
+                    title.setSpan(AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),0,title.length,0)
+                    dialogBuilder.setTitle(title)
+                    dialogTodayEvents.planned_events.adapter = EventsAdapter(TodayEvents())
+                    dialogBuilder.setPositiveButton("Close", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.dismiss()
+                    })
+                    dialogBuilder.show()
                 }
 
                 else if (spokenText == "what are my events for tomorrow") {
                     // TODO: Check events for tomorrow
                     speaker.speak("Tomorrow you have 4 events planned, the fist one is at 10 the daily meeting, at 12 University class, at 14 Familiar lunch and the last one at 18 Ballet class", TextToSpeech.QUEUE_FLUSH, null)
+                    val dialogTomorrowEvents = LayoutInflater.from(this).inflate(R.layout.dialog_planned_events, null)
+                    dialogBuilder.setView(dialogTomorrowEvents)
+                    val title = SpannableString("Tomorrow events")
+                    title.setSpan(AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),0,title.length,0)
+                    dialogBuilder.setTitle(title)
+                    dialogTomorrowEvents.planned_events.adapter = EventsAdapter(TomorrowEvents())
+                    dialogBuilder.setPositiveButton("Close", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.dismiss()
+                    })
+                    dialogBuilder.show()
                 }
 
                 else if (spokenText == "create a new event") {
