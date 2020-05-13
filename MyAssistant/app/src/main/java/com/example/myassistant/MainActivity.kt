@@ -33,6 +33,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.myassistant.adapters.ForecastAdapter
 import com.example.myassistant.mockedData.ForecastCurrentLocation
+import com.example.myassistant.ui.HelpFragment
 import com.google.android.gms.location.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
@@ -286,21 +287,20 @@ class MainActivity : AppCompatActivity() {
                     speaker.speak("Your location has been changed to $changeCity", TextToSpeech.QUEUE_FLUSH, null)
                 }
 
+                // ------------------- CALENDAR QUESTIONS
+
                 else if (spokenText == "what are my events for today") {
                     // TODO: Check events for the current day
-                    // TODO: Check fragment and change to calendar fragment if it's not there
                     speaker.speak("Your calendar today is full of events, you have 3 events", TextToSpeech.QUEUE_FLUSH, null)
                 }
 
                 else if (spokenText == "what are my events for tomorrow") {
                     // TODO: Check events for tomorrow
-                    // TODO: Check fragment and change to calendar fragment if it's not there
                     speaker.speak("Tomorrow you have 4 events planned, the fist one is at 10 the daily meeting, at 12 University class, at 14 Familiar lunch and the last one at 18 Ballet class", TextToSpeech.QUEUE_FLUSH, null)
                 }
 
                 else if (spokenText == "create a new event") {
-                    // TODO: Demanar més informació
-                    speaker.speak("The event has been created", TextToSpeech.QUEUE_FLUSH, null)
+                    // TODO: Obrir dialog per crear un nou esdeveniment
                 }
 
                 // ------------------- THE QUESTION IS NOT CORRECT
@@ -308,7 +308,7 @@ class MainActivity : AppCompatActivity() {
                     speaker.speak("sorry I don't understand what you just say, try with some of the Help screen questions", TextToSpeech.QUEUE_FLUSH, null)
                     // TODO: Change to Help Screen
                 }
-                
+
             } else {
                 Toast.makeText(this, "I can't hear you", Toast.LENGTH_LONG).show()
             }
