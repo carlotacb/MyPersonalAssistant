@@ -1,32 +1,26 @@
 package com.example.myassistant.ui.settings
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
+import android.widget.Button
 import android.widget.TextView
 
 import com.example.myassistant.R
 
 class SettingsFragment : Fragment() {
 
-    private lateinit var settingsViewModel: SettingsViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        settingsViewModel =
-            ViewModelProviders.of(this).get(SettingsViewModel::class.java)
+    override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
         val root = inflater.inflate(R.layout.fragment_settings, container, false)
-        val textView: TextView = root.findViewById(R.id.text_settings)
-        settingsViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+
+        // TODO: Get current location
+        val currentLocation: TextView = root.findViewById(R.id.selected_location)
+        currentLocation.text = "Barcelona"
+
+        val buttonLocation: Button = root.findViewById(R.id.buttonLocation)
+        buttonLocation.text = "Change current location"
         return root
     }
 
