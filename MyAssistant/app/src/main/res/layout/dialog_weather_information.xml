@@ -26,7 +26,7 @@
         android:layout_height="70dp"
         android:layout_below="@+id/city_name_dialog"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="40dp"
         android:src="@drawable/ic_weather_rain" />
 
@@ -80,6 +80,16 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="10dp"
         android:text="Feels like: " />
+
+    <TextView
+        android:id="@+id/dialog_max_min"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dialog_feels"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="10dp"
+        android:text="Max: 25ºC / Min: 15ºC" />
 
 
 
