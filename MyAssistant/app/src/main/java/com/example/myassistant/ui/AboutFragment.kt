@@ -1,4 +1,4 @@
-package com.example.myassistant.ui.help
+package com.example.myassistant.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.myassistant.R
 
-class HelpFragment : Fragment() {
+class AboutFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_help, container, false)
+        val root = inflater.inflate(R.layout.fragment_about, container, false)
         return root
     }
 

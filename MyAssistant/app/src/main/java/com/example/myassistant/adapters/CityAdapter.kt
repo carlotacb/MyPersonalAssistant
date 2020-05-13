@@ -1,10 +1,9 @@
-package com.example.myassistant.ui.weather
+package com.example.myassistant.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -38,7 +37,8 @@ class CityAdapter(private val cityList: List<CityItem>) : RecyclerView.Adapter<C
         holder.cityTemp.text = currentItem.currentTemperature.toString().plus("ºC")
 
         holder.cityWeather.setImageResource(getWeatherIcon(currentItem.weather))
-        holder.futureTemps.adapter = ListWeatherAdapter(currentItem.list)
+        holder.futureTemps.adapter =
+            ListWeatherAdapter(currentItem.list)
         holder.futureTemps.layoutManager = LinearLayoutManager(holder.futureTemps.context)
         holder.futureTemps.setHasFixedSize(true)
     }

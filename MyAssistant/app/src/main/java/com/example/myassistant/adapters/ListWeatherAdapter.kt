@@ -1,10 +1,9 @@
-package com.example.myassistant.ui.weather
+package com.example.myassistant.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myassistant.R
 
@@ -19,7 +18,9 @@ class ListWeatherAdapter(private val dataSource: List<DayTemperature>) : Recycle
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListWeatherViewHolder {
         val cities = LayoutInflater.from(parent.context).inflate(R.layout.weather_list_items, parent, false)
-        return ListWeatherViewHolder(cities)
+        return ListWeatherViewHolder(
+            cities
+        )
     }
 
     override fun getItemCount(): Int {

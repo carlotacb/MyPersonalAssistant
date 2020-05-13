@@ -1,4 +1,4 @@
-package com.example.myassistant.ui.home
+package com.example.myassistant.ui
 
 import android.content.Context
 import android.content.SharedPreferences

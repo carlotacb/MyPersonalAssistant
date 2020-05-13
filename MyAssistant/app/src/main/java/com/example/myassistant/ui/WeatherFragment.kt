@@ -1,4 +1,4 @@
-package com.example.myassistant.ui.weather
+package com.example.myassistant.ui
 
 import android.app.AlertDialog
 import android.content.DialogInterface
@@ -14,10 +14,13 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myassistant.R
+import com.example.myassistant.adapters.CityAdapter
+import com.example.myassistant.adapters.CityItem
+import com.example.myassistant.adapters.DayTemperature
+import com.example.myassistant.adapters.ListWeatherAdapter
 import com.example.myassistant.getWeatherIcon
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.dialog_add_city.view.*
-import java.io.Console
 
 class WeatherFragment : Fragment() {
 
@@ -49,7 +52,8 @@ class WeatherFragment : Fragment() {
         currentWeather.setImageResource(getWeatherIcon(weather))
 
         val currentFutureTemps: RecyclerView = root.findViewById(R.id.future_temps)
-        currentFutureTemps.adapter = ListWeatherAdapter(list2)
+        currentFutureTemps.adapter =
+            ListWeatherAdapter(list2)
         currentFutureTemps.layoutManager = LinearLayoutManager(activity)
         currentFutureTemps.setHasFixedSize(true)
 
@@ -83,10 +87,22 @@ class WeatherFragment : Fragment() {
     private fun dataGenerated2(): List<DayTemperature> {
         val list = ArrayList<DayTemperature>()
 
-        list += DayTemperature("Monday", 20,25)
-        list += DayTemperature("Tuesday", 18,22)
-        list += DayTemperature("Wednesday", 19,23)
-        list += DayTemperature("Thursday", 22,24)
+        list += DayTemperature("Monday", 20, 25)
+        list += DayTemperature(
+            "Tuesday",
+            18,
+            22
+        )
+        list += DayTemperature(
+            "Wednesday",
+            19,
+            23
+        )
+        list += DayTemperature(
+            "Thursday",
+            22,
+            24
+        )
 
         return list
     }
@@ -96,30 +112,65 @@ class WeatherFragment : Fragment() {
 
         val bcn = ArrayList<DayTemperature>()
 
-        bcn += DayTemperature("Monday", 20,25)
-        bcn += DayTemperature("Tuesday", 18,22)
-        bcn += DayTemperature("Wednesday", 19,23)
-        bcn += DayTemperature("Thursday", 22,24)
+        bcn += DayTemperature("Monday", 20, 25)
+        bcn += DayTemperature("Tuesday", 18, 22)
+        bcn += DayTemperature(
+            "Wednesday",
+            19,
+            23
+        )
+        bcn += DayTemperature(
+            "Thursday",
+            22,
+            24
+        )
 
         val ny = ArrayList<DayTemperature>()
 
-        ny += DayTemperature("Monday", 15,19)
-        ny += DayTemperature("Tuesday", 18,20)
-        ny += DayTemperature("Wednesday", 13,18)
-        ny += DayTemperature("Thursday", 20,22)
+        ny += DayTemperature("Monday", 15, 19)
+        ny += DayTemperature("Tuesday", 18, 20)
+        ny += DayTemperature(
+            "Wednesday",
+            13,
+            18
+        )
+        ny += DayTemperature("Thursday", 20, 22)
 
         val lnd = ArrayList<DayTemperature>()
 
-        lnd += DayTemperature("Monday", 18,22)
-        lnd += DayTemperature("Tuesday", 15,20)
-        lnd += DayTemperature("Wednesday", 12,18)
-        lnd += DayTemperature("Thursday", 13,17)
+        lnd += DayTemperature("Monday", 18, 22)
+        lnd += DayTemperature("Tuesday", 15, 20)
+        lnd += DayTemperature(
+            "Wednesday",
+            12,
+            18
+        )
+        lnd += DayTemperature(
+            "Thursday",
+            13,
+            17
+        )
 
         val list = ArrayList<CityItem>()
 
-        list += CityItem("Paris", 22, "cloudy", bcn)
-        list += CityItem("New York", 25, "moon", ny)
-        list += CityItem("London", 15, "storm", lnd)
+        list += CityItem(
+            "Paris",
+            22,
+            "cloudy",
+            bcn
+        )
+        list += CityItem(
+            "New York",
+            25,
+            "moon",
+            ny
+        )
+        list += CityItem(
+            "London",
+            15,
+            "storm",
+            lnd
+        )
 
         return list
     }

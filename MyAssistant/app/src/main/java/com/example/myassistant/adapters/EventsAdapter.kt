@@ -1,4 +1,4 @@
-package com.example.myassistant.ui.calendar
+package com.example.myassistant.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +18,9 @@ class EventsAdapter(private val eventsList: List<EventItem>) : RecyclerView.Adap
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventsViewHolder {
         val events = LayoutInflater.from(parent.context).inflate(R.layout.event_card, parent, false)
-        return EventsViewHolder(events)
+        return EventsViewHolder(
+            events
+        )
     }
 
     override fun getItemCount(): Int {

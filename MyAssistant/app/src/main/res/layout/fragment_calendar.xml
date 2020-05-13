@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:nestedScrollingEnabled="true"
     android:background="#DDD"
-    tools:context=".ui.calendar.CalendarFragment">
+    tools:context=".ui.CalendarFragment">
 
     <CalendarView
         android:id="@+id/calendarView"

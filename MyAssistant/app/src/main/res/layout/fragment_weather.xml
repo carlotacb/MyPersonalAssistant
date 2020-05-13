@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:nestedScrollingEnabled="true"
     android:background="#DDD"
-    tools:context=".ui.weather.WeatherFragment">
+    tools:context=".ui.WeatherFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

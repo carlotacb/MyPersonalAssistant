@@ -1,4 +1,4 @@
-package com.example.myassistant.ui.settings
+package com.example.myassistant.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
