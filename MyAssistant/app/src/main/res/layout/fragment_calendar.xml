@@ -1,25 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:nestedScrollingEnabled="true"
+    android:background="#DDD"
     tools:context=".ui.calendar.CalendarFragment">
-
-    <TextView
-        android:id="@+id/text_gallery"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView"
-        app:layout_constraintVertical_bias="0.09" />
 
     <CalendarView
         android:id="@+id/calendarView"
@@ -28,24 +16,42 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp" />
 
-    <Button
-        android:id="@+id/button"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addevent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.91"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="bottom|end"
+        android:layout_marginStart="339dp"
+        android:layout_marginTop="311dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/colorAccent"
+        app:srcCompat="@drawable/ic_add_white" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/calendar_events"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/calendarView"
+        android:layout_marginTop="10dp"
         tools:layout_editor_absoluteX="0dp"
-        tools:listitem="@layout/event_card"/>
+        tools:listitem="@layout/event_card" />
 
+    <!-- <Button
+        android:id="@+id/button_add_event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/calendarView"
+        android:layout_alignParentEnd="true"
+        android:text="Add event"
+        android:textAllCaps="false"
+        android:textSize="18dp"
+        android:drawableLeft="@drawable/ic_add"
+        android:background="@drawable/button_style"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:layout_marginEnd="20dp" /> -->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
