@@ -205,21 +205,6 @@ class MainActivity : AppCompatActivity() {
                     // TODO: Get tomorrow weather
                     speaker.speak("Tomorrow will be a rainy day and the temperature will be 15 degrees", TextToSpeech.QUEUE_FLUSH, null)
                     dialogBuilder.setView(dialogWeatherInformation)
-                    val title = SpannableString("Tomorrow's weather")
-                    title.setSpan(AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),0,title.length,0)
-                    dialogBuilder.setTitle(title)
-                    dialogWeatherInformation.city_name_dialog.text = "Barcelona"
-                    dialogWeatherInformation.dialog_preasure.text = "Preasure: 1015 mb"
-                    dialogWeatherInformation.dialog_temp.text = "20ºC"
-                    dialogWeatherInformation.dialog_humidity.text = "Humidity: 30%"
-                    dialogWeatherInformation.dialog_feels.text = "Feels like: 30ºC"
-                    dialogWeatherInformation.dialog_uvIndex.text = "UV Index: 4"
-                    dialogWeatherInformation.dialog_weatherIcon.setImageResource(getWeatherIcon("sunny"))
-                    dialogBuilder.setPositiveButton("Close", DialogInterface.OnClickListener { dialog, id ->
-                        dialog.dismiss()
-                    })
-                    dialogBuilder.show()
-
                 }
 
                 else if (spokenText == "what's the weather forecast") {
