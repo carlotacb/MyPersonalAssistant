@@ -164,7 +164,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        val dialogWeatherInformation = LayoutInflater.from(this).inflate(R.layout.dialog_weather_information, null)
         val dialogBuilder = AlertDialog.Builder(this)
 
         if (requestCode == SPEECH_CODE) {
@@ -180,10 +179,9 @@ class MainActivity : AppCompatActivity() {
 
                 if (spokenText == "what's the weather today") {
                     // TODO: Get current temperature and weather
-                    // TODO: Més informació sobre el weather d'avui (Nova card a sobre)
-                    // TODO: Check fragment and change to weather fragment if it's not there
                     speaker.speak("The weather is 25 degrees", TextToSpeech.QUEUE_FLUSH, null)
 
+                    val dialogWeatherInformation = LayoutInflater.from(this).inflate(R.layout.dialog_weather_information, null)
                     dialogBuilder.setView(dialogWeatherInformation)
                     val title = SpannableString("Today's weather")
                     title.setSpan(AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),0,title.length,0)
@@ -204,7 +202,15 @@ class MainActivity : AppCompatActivity() {
                 else if (spokenText == "what will be the weather tomorrow") {
                     // TODO: Get tomorrow weather
                     speaker.speak("Tomorrow will be a rainy day and the temperature will be 15 degrees", TextToSpeech.QUEUE_FLUSH, null)
-                    dialogBuilder.setView(dialogWeatherInformation)
+
+                    val dialogForecastInformation = LayoutInflater.from(this).inflate(R.layout.dialog_forecast_information, null)
+                    dialogBuilder.setView(dialogForecastInformation)
+                    val title = SpannableString("Barcelona forecast")
+                    title.setSpan(AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),0,title.length,0)
+                    dialogBuilder.setPositiveButton("Close", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.dismiss()
+                    })
+                    dialogBuilder.show()
                 }
 
                 else if (spokenText == "what's the weather forecast") {
