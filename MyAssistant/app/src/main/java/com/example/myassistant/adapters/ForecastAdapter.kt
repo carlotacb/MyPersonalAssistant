@@ -13,11 +13,11 @@ data class ForecastItem(val day: String, val weather: String, val max: String, v
 
 class ForecastAdapter(private val forecastItems: List<ForecastItem>) : RecyclerView.Adapter<ForecastAdapter.ForecastViewHolder>() {
 
-    class ForecastViewHolder(eventsView: View): RecyclerView.ViewHolder(eventsView) {
-        val forecastDay : TextView = eventsView.findViewById(R.id.forecast_list_day)
-        val forecastImage : ImageView = eventsView.findViewById(R.id.forecast_list_weatherIcon)
-        val forecastMin : TextView = eventsView.findViewById(R.id.forecast_list_min)
-        val forecastMax : TextView = eventsView.findViewById(R.id.forecast_list_max)
+    class ForecastViewHolder(forecastView: View): RecyclerView.ViewHolder(forecastView) {
+        val forecastDay : TextView = forecastView.findViewById(R.id.forecast_list_day)
+        val forecastImage : ImageView = forecastView.findViewById(R.id.forecast_list_weatherIcon)
+        val forecastMin : TextView = forecastView.findViewById(R.id.forecast_list_min)
+        val forecastMax : TextView = forecastView.findViewById(R.id.forecast_list_max)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ForecastViewHolder {
