@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_bg"
+    android:padding="10dp">
+
+    <EditText
+        android:id="@+id/event_title"
+        android:layout_width="match_parent"
+        android:layout_margin="15dp"
+        android:layout_height="wrap_content"
+        android:hint="Event Name" />
+
+    <DatePicker
+        android:id="@+id/create_date"
+        android:layout_margin="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="START TIME:"
+        android:layout_marginLeft="15dp"
+        android:textSize="20dp"
+        android:layout_height="wrap_content" />
+
+    <TimePicker
+        android:id="@+id/create_start_time"
+        android:layout_margin="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="END TIME:"
+        android:layout_marginLeft="15dp"
+        android:textSize="20dp"
+        android:layout_height="wrap_content" />
+
+    <TimePicker
+        android:id="@+id/create_end_time"
+        android:layout_margin="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

@@ -25,18 +25,19 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.myassistant.adapters.EventsAdapter
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.myassistant.adapters.ForecastAdapter
+import com.example.myassistant.adapters.ListEventAdapter
 import com.example.myassistant.mockedData.ForecastCurrentLocation
 import com.example.myassistant.mockedData.TodayEvents
 import com.example.myassistant.mockedData.TomorrowEvents
-import com.example.myassistant.ui.HelpFragment
 import com.google.android.gms.location.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
@@ -295,13 +296,13 @@ class MainActivity : AppCompatActivity() {
 
                 else if (spokenText == "what are my events for today") {
                     // TODO: Check events for the current day
-                    speaker.speak("Your calendar today is full of events, you have 3 events", TextToSpeech.QUEUE_FLUSH, null)
+                    speaker.speak("Today you have 3 events, at 10 Daily Meeting, at 12 Videollamada familiar and at 18 Fitness class", TextToSpeech.QUEUE_FLUSH, null)
                     val dialogTodayEvents = LayoutInflater.from(this).inflate(R.layout.dialog_planned_events, null)
                     dialogBuilder.setView(dialogTodayEvents)
                     val title = SpannableString("Today events")
                     title.setSpan(AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),0,title.length,0)
                     dialogBuilder.setTitle(title)
-                    dialogTodayEvents.planned_events.adapter = EventsAdapter(TodayEvents())
+                    dialogTodayEvents.planned_events.adapter = ListEventAdapter(TodayEvents())
                     dialogBuilder.setPositiveButton("Close", DialogInterface.OnClickListener { dialog, id ->
                         dialog.dismiss()
                     })
@@ -310,13 +311,13 @@ class MainActivity : AppCompatActivity() {
 
                 else if (spokenText == "what are my events for tomorrow") {
                     // TODO: Check events for tomorrow
-                    speaker.speak("Tomorrow you have 4 events planned, the fist one is at 10 the daily meeting, at 12 University class, at 14 Familiar lunch and the last one at 18 Ballet class", TextToSpeech.QUEUE_FLUSH, null)
+                    speaker.speak("Tomorrow you have 2 events planned, at 9 you have to pickup the purchase and at 10 you have the Daily Meeting", TextToSpeech.QUEUE_FLUSH, null)
                     val dialogTomorrowEvents = LayoutInflater.from(this).inflate(R.layout.dialog_planned_events, null)
                     dialogBuilder.setView(dialogTomorrowEvents)
                     val title = SpannableString("Tomorrow events")
                     title.setSpan(AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),0,title.length,0)
                     dialogBuilder.setTitle(title)
-                    dialogTomorrowEvents.planned_events.adapter = EventsAdapter(TomorrowEvents())
+                    dialogTomorrowEvents.planned_events.adapter = ListEventAdapter(TomorrowEvents())
                     dialogBuilder.setPositiveButton("Close", DialogInterface.OnClickListener { dialog, id ->
                         dialog.dismiss()
                     })
@@ -325,6 +326,19 @@ class MainActivity : AppCompatActivity() {
 
                 else if (spokenText == "create a new event") {
                     // TODO: Obrir dialog per crear un nou esdeveniment
+                    val dialogCreateEvent = LayoutInflater.from(this).inflate(R.layout.dialog_add_event, null)
+                    dialogBuilder.setView(dialogCreateEvent)
+                    val title = SpannableString("Create new event")
+                    title.setSpan(AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),0,title.length,0)
+                    dialogBuilder.setTitle(title)
+                    dialogBuilder.setPositiveButton("Create", DialogInterface.OnClickListener { dialog, id ->
+                        // TODO: Get information and create event
+                        dialog.dismiss()
+                    })
+                    dialogBuilder.setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.dismiss()
+                    })
+                    dialogBuilder.show()
                 }
 
                 // ------------------- THE QUESTION IS NOT CORRECT
