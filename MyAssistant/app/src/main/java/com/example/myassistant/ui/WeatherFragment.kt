@@ -29,7 +29,7 @@ class WeatherFragment : Fragment() {
     // TODO: Get temperature from current location
     private var temperature = 25
     // TODO: Get current weather
-    private var weather = "cloudy"
+    private var weather = "sunny"
 
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
         val root = inflater.inflate(R.layout.fragment_weather, container, false)

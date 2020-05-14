@@ -29,7 +29,7 @@ class HomeFragment : Fragment() {
     // TODO: Get current weather
     private var weather = "sunny"
     // TODO: Get number events planned for today
-    private var events = 2
+    private var events = 3
     // TODO: Get user (?)
     private var user = "Carlota"
 
@@ -49,7 +49,8 @@ class HomeFragment : Fragment() {
         val sharedPreferences : SharedPreferences = this.requireActivity().getSharedPreferences("shared-preference-file", Context.MODE_PRIVATE)
 
         val currentCity: TextView = root.findViewById(R.id.default_location)
-        currentCity.text = sharedPreferences.getString("DefLocation", "Madrid")
+        // currentCity.text = sharedPreferences.getString("DefLocation", "Madrid")
+        currentCity.text = "Barcelona"
 
         val currentTemperature: TextView = root.findViewById(R.id.current_temperature)
         currentTemperature.text = temperature.toString().plus("ºC")
