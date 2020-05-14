@@ -12,7 +12,7 @@
         android:id="@+id/cardLocation"
         android:layout_width="365dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="100dp"
         app:cardBackgroundColor="@color/colorSoftBackground"
         app:cardCornerRadius="20dp"
         app:cardElevation="7dp"
@@ -32,7 +32,6 @@
             android:padding="4dp">
 
             <TextView
-                android:id="@+id/current_loc_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="monospace"
@@ -42,7 +41,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/current_location"
+                android:id="@+id/default_location"
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="15dp"
@@ -94,7 +93,6 @@
             android:padding="4dp">
 
             <TextView
-                android:id="@+id/sel_location_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="monospace"
@@ -104,7 +102,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/selected_location"
+                android:id="@+id/current_location"
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="15dp"

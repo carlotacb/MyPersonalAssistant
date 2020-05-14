@@ -49,7 +49,7 @@ class HomeFragment : Fragment() {
         val sharedPreferences : SharedPreferences = this.requireActivity().getSharedPreferences("shared-preference-file", Context.MODE_PRIVATE)
 
         val currentCity: TextView = root.findViewById(R.id.default_location)
-        currentCity.text = sharedPreferences.getString("Location", "Madrid")
+        currentCity.text = sharedPreferences.getString("DefLocation", "Madrid")
 
         val currentTemperature: TextView = root.findViewById(R.id.current_temperature)
         currentTemperature.text = temperature.toString().plus("ºC")
