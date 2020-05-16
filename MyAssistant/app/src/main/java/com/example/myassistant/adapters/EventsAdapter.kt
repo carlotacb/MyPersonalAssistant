@@ -6,8 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myassistant.R
-
-data class EventItem(val time: String, val name: String)
+import com.example.myassistant.models.EventItem
 
 class EventsAdapter(private val eventsList: List<EventItem>) : RecyclerView.Adapter<EventsAdapter.EventsViewHolder>() {
 

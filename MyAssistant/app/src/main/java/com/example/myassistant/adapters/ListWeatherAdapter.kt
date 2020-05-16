@@ -6,8 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myassistant.R
-
-data class DayTemperature(val day: String, val min: Int, val max: Int)
+import com.example.myassistant.models.DayTemperature
 
 class ListWeatherAdapter(private val dataSource: List<DayTemperature>) : RecyclerView.Adapter<ListWeatherAdapter.ListWeatherViewHolder>() {
     class ListWeatherViewHolder (temperatures: View): RecyclerView.ViewHolder(temperatures) {

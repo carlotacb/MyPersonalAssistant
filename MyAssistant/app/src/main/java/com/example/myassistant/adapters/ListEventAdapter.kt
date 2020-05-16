@@ -1,12 +1,12 @@
 package com.example.myassistant.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myassistant.R
+import com.example.myassistant.models.EventItem
 
 class ListEventAdapter(private val events: List<EventItem>) : RecyclerView.Adapter<ListEventAdapter.ListEventHolder>() {
 

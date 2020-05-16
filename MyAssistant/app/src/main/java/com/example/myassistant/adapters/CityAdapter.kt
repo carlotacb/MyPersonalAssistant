@@ -9,8 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myassistant.R
 import com.example.myassistant.getWeatherIcon
-
-data class CityItem(val city: String, val currentTemperature: Int, val weather: String, val list: List<DayTemperature>)
+import com.example.myassistant.models.CityItem
 
 class CityAdapter(private val cityList: List<CityItem>) : RecyclerView.Adapter<CityAdapter.CityViewHolder>() {
 

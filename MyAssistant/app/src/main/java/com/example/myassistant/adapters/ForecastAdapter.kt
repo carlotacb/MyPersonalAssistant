@@ -8,8 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myassistant.R
 import com.example.myassistant.getWeatherIcon
+import com.example.myassistant.models.ForecastItem
 
-data class ForecastItem(val day: String, val weather: String, val max: String, val min: String)
 
 class ForecastAdapter(private val forecastItems: List<ForecastItem>) : RecyclerView.Adapter<ForecastAdapter.ForecastViewHolder>() {
 
