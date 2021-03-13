@@ -19,26 +19,34 @@ This project is a Personal Assistant, the idea is to follow some specs for the M
 This is the list of functionalities asked in the specification:
 
 #### Ask for the current weather
-
+Working as expected.
 
 #### Ask for tomorrow’s weather forecast
-
+Working as expected.
 
 #### Ask for the weather for the following days
-
+Working as expected.
 
 #### Ask for the weather in a certain location
-
+Working as expected.
 
 #### Ask for the location
-
+It says correctly the current location, checking the preferences file but there is no shown map.
 
 #### Changing the default location to a certain city 
-It correcly changes the preferences file but 
+It correcly changes the preferences file but there is no shown map.
 
 #### Check the default location
-It correcly says where you are (it check it at the preferences file) but there is no shown map
+It correcly says where you are (it check it at the preferences file) but there is no shown map.
 
+#### Check the list of events for today
+Not implemented.
+
+#### Check the list of events for tomorrow
+Not implemented.
+
+#### Set up an event for today
+Not implemented.
 
 ## Possible questions for the assistant
 
